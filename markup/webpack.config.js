@@ -1,6 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const ejsDirectory = path.resolve(__dirname, "src", "ejs");
 
@@ -47,7 +48,9 @@ module.exports = function () {
     return {
         mode: "development",
 
-        entry: path.resolve(__dirname, "src", "js", "index.js"), // エントリーポイント
+        entry: {
+            main: path.resolve(__dirname, "src", "js", "index.js"),
+        },
 
         output: {
             path: path.resolve(__dirname, "dist"),
@@ -63,11 +66,22 @@ module.exports = function () {
                         "template-ejs-loader",
                     ],
                 },
+                {
+                    test: /\.scss$/,  // SCSSファイルを対象にする
+                    use: [
+                        MiniCssExtractPlugin.loader,  // CSSファイルを別に出力
+                        "css-loader",  // CSSをJavaScriptに取り込む
+                        "sass-loader",  // SCSSをCSSにコンパイル
+                    ],
+                },
             ]
         },
 
         plugins: [
             ...generateHtmlPlugins(ejsDirectory), // 自動的に生成された HtmlWebpackPlugin のリスト
+            new MiniCssExtractPlugin({
+                filename: "css/[name].css",  // 出力するCSSファイルのパス
+            }),
         ],
 
         devServer: {
