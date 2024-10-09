@@ -69,5 +69,16 @@ module.exports = function () {
         plugins: [
             ...generateHtmlPlugins(ejsDirectory), // 自動的に生成された HtmlWebpackPlugin のリスト
         ],
+
+        devServer: {
+            static: {
+                directory: path.join(__dirname, 'src'),
+            },
+            compress: true,  // gzip圧縮を有効化
+            port: 9000,  // サーバーが使用するポート番号
+            open: true,  // ブラウザで自動的にページを開く
+            hot: true,  // ホットリロードを有効化
+            liveReload: true,  // ファイル変更時に自動でリロード
+        },
     };
 };
