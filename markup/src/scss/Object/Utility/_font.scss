@@ -1,0 +1,9 @@
+@use "../../foundation/system" as s;
+@use "../../foundation/mixin" as m;
+
+.u-font {
+    @include s.breakpoint(tablet) {
+    }
+    @include s.breakpoint(pc) {
+    }
+}

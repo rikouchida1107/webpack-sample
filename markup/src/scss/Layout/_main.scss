@@ -1,0 +1,12 @@
+@use "../foundation/system" as s;
+@use "../foundation/mixin" as m;
+
+.l-main {
+    padding-top: 100px;
+    background-color: antiquewhite;
+    @include s.breakpoint(tablet) {
+    }
+    @include s.breakpoint(pc) {
+        padding-top: 50px;
+    }
+}

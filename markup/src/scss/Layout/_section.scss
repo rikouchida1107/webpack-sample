@@ -1,0 +1,12 @@
+@use "../foundation/system" as s;
+@use "../foundation/mixin" as m;
+
+.l-section {
+    @include s.breakpoint(tablet) {
+    }
+    @include s.breakpoint(pc) {
+    }
+    &+& {
+        margin-top: 200px;
+    }
+}

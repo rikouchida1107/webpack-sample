@@ -1,0 +1,14 @@
+@use "../foundation/system" as s;
+@use "../foundation/mixin" as m;
+
+.l-inner {
+    max-width: calc(1000px + 50px);
+    padding: 0 25px;
+    margin: 0 auto;
+    &--wide {
+        max-width: calc(1200px + 50px);
+    }
+    &--narrow {
+        max-width: calc(800px + 50px);
+    }
+}

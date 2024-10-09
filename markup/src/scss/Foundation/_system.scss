@@ -1,0 +1,74 @@
+/* system
+--------------------------- */
+
+// color system
+$c-white: #fff;
+$c-black: #060606;
+$c-grayText: #6c6c6c;
+
+
+// responsive system
+@mixin breakpoint($point) {
+    @if $point == tablet {
+        @media (min-width: 768px) {
+            @content;
+        }
+    }
+    @if $point == pc {
+        @media (min-width: 1200px) {
+            @content;
+        }
+    }
+}
+
+
+// font system
+// ヒラギノ角ゴ ProN
+@mixin HiraginoKakuGothicProN() {
+    font-family: 'Hiragino Kaku Gothic ProN',"Hiragino Sans", 'Meiryo', 'Noto Sans JP', sans-serif;
+}
+
+
+// font-weight system
+@mixin font_W3($weight: 300) {
+    font-weight: $weight;
+}
+@mixin font_W6($weight: 600) {
+    font-weight: $weight;
+}
+
+
+// transition
+@mixin transition-base($second: 0.3s) {
+    transition: all $second;
+}
+
+
+// display only
+.pc-only {
+    display: inline-block;
+    @include breakpoint(tablet) {
+        display: none;
+    }
+    @include breakpoint(sp) {
+        display: none;
+    }
+}
+.tablet-only {
+    display: none;
+    @include breakpoint(tablet) {
+        display: inline-block;
+    }
+    @include breakpoint(sp) {
+        display: none;
+    }
+}
+.sp-only {
+    display: none;
+    @include breakpoint(tablet) {
+        display: none;
+    }
+    @include breakpoint(sp) {
+        display: inline-block;
+    }
+}
